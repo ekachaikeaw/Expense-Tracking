@@ -2,11 +2,13 @@ import {
     categories,
     NewTransaction,
     NewTransactionAttachment,
+    Transaction,
     transactionAttachments,
     transactions,
 } from "src/db/schema";
 import { db } from "src/db";
 import { and, desc, eq, gte, lte, sql } from "drizzle-orm";
+import { QueryBuilder } from "drizzle-orm/pg-core";
 
 export async function createTransaction(transaction: NewTransaction) {
     const [newTransaction] = await db
@@ -193,7 +195,7 @@ export async function getTransactions(
         .orderBy(desc(transactions.transactionDate));
 
     // Apply filters if any exist
-    let baseQuery = query;
+    let baseQuery = query as any;
     if (conditions.length > 0) {
         baseQuery = query.where(and(...conditions));
     }
