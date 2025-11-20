@@ -1,4 +1,4 @@
-import { getBearerToken, validateJWT } from "src/utils/auth.js";
+import { getBearerToken, validateJWT } from "../utils/auth.js";
 import { Request, Response, NextFunction } from "express";
 import { config } from "../config.js";
 import { UserAuthenticateError } from "../utils/errors.js";
