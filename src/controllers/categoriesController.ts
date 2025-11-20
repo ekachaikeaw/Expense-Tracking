@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import * as categoriesService from "../services/categoriesService";
-import { responseWithJSON } from "../utils/resJson";
-import { NewCategory } from "../db/schema";
+import * as categoriesService from "../services/categoriesService.js";
+import { responseWithJSON } from "../utils/resJson.js";
+import { NewCategory } from "../db/schema.js";
 
 export async function createCategory(req: Request, res: Response) {
     const newCategoryData: NewCategory = req.body;

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
-import { db } from "../db";
-import { categories, NewCategory } from "../db/schema";
+import { db } from "../db/index.js";
+import { categories, NewCategory } from "../db/schema.js";
 
 export async function createCategory(category: NewCategory) {
     const [newCategory] = await db

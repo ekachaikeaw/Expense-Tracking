@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { NewTransaction } from "../db/schema";
+import { NewTransaction } from "../db/schema.js";
 import * as transactionService from "../services/transactionService.js";
-import { responseWithJSON } from "../utils/resJson";
+import { responseWithJSON } from "../utils/resJson.js";
 
 export async function createTransaction(req: Request, res: Response) {
     if (!req.user || !req.user.id) {

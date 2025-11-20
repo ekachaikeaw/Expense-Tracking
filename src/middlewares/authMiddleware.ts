@@ -1,6 +1,6 @@
 import { getBearerToken, validateJWT } from "src/utils/auth.js";
 import { Request, Response, NextFunction } from "express";
-import { config } from "src/config";
+import { config } from "../config.js";
 import { UserAuthenticateError } from "../utils/errors.js";
 import * as usersService from "../services/userService.js";
 import { User } from "../db/schema.js";

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
-import { db } from "../db";
-import { accounts, NewAccount } from "../db/schema";
+import { db } from "../db/index.js";
+import { accounts, NewAccount } from "../db/schema.js";
 
 export async function createAccount(account: NewAccount) {
     const [newAccount] = await db.insert(accounts).values(account).returning();

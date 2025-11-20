@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import * as accountService from "../services/accountService";
-import { responseWithJSON, responseWithError } from "../utils/resJson";
-import { NewAccount } from "../db/schema";
+import * as accountService from "../services/accountService.js";
+import { responseWithJSON, responseWithError } from "../utils/resJson.js";
+import { NewAccount } from "../db/schema.js";
 
 export async function createAccount(req: Request, res: Response) {
     const newAccountData: NewAccount = req.body;

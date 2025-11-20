@@ -1,6 +1,6 @@
-import * as accountRepo from "../repositories/accountRepo";
-import { NotFoundError } from "../utils/errors";
-import { NewAccount } from "../db/schema";
+import * as accountRepo from "../repositories/accountRepo.js";
+import { NotFoundError } from "../utils/errors.js";
+import { NewAccount } from "../db/schema.js";
 
 export async function createAccount(account: NewAccount) {
     const newAccount = await accountRepo.createAccount(account);

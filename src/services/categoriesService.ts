@@ -1,6 +1,6 @@
-import * as categoriesRepo from "../repositories/categoriesRepo";
-import { BadRequestError } from "../utils/errors";
-import { NewCategory } from "../db/schema";
+import * as categoriesRepo from "../repositories/categoriesRepo.js";
+import { BadRequestError } from "../utils/errors.js";
+import { NewCategory } from "../db/schema.js";
 
 export async function createCategory(category: NewCategory) {
     const newCategory = await categoriesRepo.createCategory(category);

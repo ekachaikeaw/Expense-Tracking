@@ -5,8 +5,8 @@ import {
     Transaction,
     transactionAttachments,
     transactions,
-} from "../db/schema";
-import { db } from "../db";
+} from "../db/schema.js";
+import { db } from "../db/index.js";
 import { and, desc, eq, gte, lte, sql } from "drizzle-orm";
 
 export async function createTransaction(transaction: NewTransaction) {
