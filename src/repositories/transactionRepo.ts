@@ -5,10 +5,9 @@ import {
     Transaction,
     transactionAttachments,
     transactions,
-} from "src/db/schema";
-import { db } from "src/db";
+} from "../db/schema";
+import { db } from "../db";
 import { and, desc, eq, gte, lte, sql } from "drizzle-orm";
-import { QueryBuilder } from "drizzle-orm/pg-core";
 
 export async function createTransaction(transaction: NewTransaction) {
     const [newTransaction] = await db

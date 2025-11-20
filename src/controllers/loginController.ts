@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { BadRequestError, UserAuthenticateError } from "../utils/errors.js";
 import { checkPassword, makeJWT, makeRefreshToken } from "../utils/auth.js";
 import { responseWithJSON } from "../utils/resJson.js";
-// import { getUserByEmail } from "../db/queries/users.js";
 import * as usersService from "../services/userService.js";
 import { UserResponse } from "./usersController.js";
 import { config } from "../config.js";

@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import { responseWithJSON } from "../utils/resJson.js";
 import * as usersService from "../services/userService.js";
-import { NewUser } from "src/db/schema.js";
+import { NewUser } from "../db/schema.js";
 import { BadRequestError } from "../utils/errors.js";
-import { hashPassword } from "src/utils/auth.js";
+import { hashPassword } from "../utils/auth.js";
 
 type requestCreateUser = {
     email: string;

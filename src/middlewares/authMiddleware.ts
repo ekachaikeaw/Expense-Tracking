@@ -1,10 +1,9 @@
 import { getBearerToken, validateJWT } from "src/utils/auth.js";
 import { Request, Response, NextFunction } from "express";
 import { config } from "src/config";
-import { UserAuthenticateError } from "src/utils/errors.js";
+import { UserAuthenticateError } from "../utils/errors.js";
 import * as usersService from "../services/userService.js";
-import { User } from "src/db/schema.js";
-import { UserResponse } from "src/controllers/usersController.js";
+import { User } from "../db/schema.js";
 
 export async function auth(req: Request, res: Response, next: NextFunction) {
     // Your implementation here

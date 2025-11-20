@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import { db } from "../db/index.js";
-import { NewUser, users } from "src/db/schema.js";
+import { NewUser, users } from "../db/schema.js";
 
 export async function create(user: NewUser) {
     const [result] = await db

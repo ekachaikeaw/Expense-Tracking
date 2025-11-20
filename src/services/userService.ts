@@ -1,5 +1,5 @@
 import * as userRepo from "../repositories/usersRepo.js";
-import { NewUser } from "src/db/schema.js";
+import { NewUser } from "../db/schema.js";
 
 export async function createUser(user: NewUser) {
     return userRepo.create(user);

@@ -1,5 +1,5 @@
 import * as transactionRepo from "../repositories/transactionRepo.js";
-import { NewTransaction } from "src/db/schema";
+import { NewTransaction } from "../db/schema";
 import {
     TransactionSummaryFilters,
     transactionType,
