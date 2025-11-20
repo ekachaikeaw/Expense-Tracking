@@ -1,0 +1,249 @@
+{
+	"info": {
+		"_postman_id": "f1957aeb-42bb-4175-acd8-cf73eb18e456",
+		"name": "Expense Tracking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31017934"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"pop@mail.com\",\r\n    \"password\": \"pop\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/users"
+					},
+					"response": []
+				},
+				{
+					"name": "Get user by email",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjaGlycHkiLCJzdWIiOiJiNTUwYjE3Yy1lMTNiLTQyZTMtODVlZi0yMmUxY2I3OTU3MjciLCJpYXQiOjE3NjM0NDU5MTYsImV4cCI6MTc2MzQ0OTUxNn0.o-Drzb8WCZlht5zAdokEptt9kxmLWpdfiNkIZkbrJPc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"pop@mail.com\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/users"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "accounts",
+			"item": [
+				{
+					"name": "Create account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjaGlycHkiLCJzdWIiOiJiNTUwYjE3Yy1lMTNiLTQyZTMtODVlZi0yMmUxY2I3OTU3MjciLCJpYXQiOjE3NjM0NDYzNDIsImV4cCI6MTc2MzQ0OTk0Mn0.xh84Rv2xE6EwyoBUOcQ71wnAC9zfk5VCDuphKpv9NTY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"normal\",\r\n    \"type\": \"cash\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/accounts"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "categories",
+			"item": [
+				{
+					"name": "Create category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjaGlycHkiLCJzdWIiOiJiNTUwYjE3Yy1lMTNiLTQyZTMtODVlZi0yMmUxY2I3OTU3MjciLCJpYXQiOjE3NjM1MTg5MDgsImV4cCI6MTc2MzUyMjUwOH0.X7J_BBOxGKbOrOyrflrNe_LwfPXDiaebmUrWODxUcBo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Salary\",\r\n    \"type\": \"income\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/categories"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete category",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjaGlycHkiLCJzdWIiOiJiNTUwYjE3Yy1lMTNiLTQyZTMtODVlZi0yMmUxY2I3OTU3MjciLCJpYXQiOjE3NjM0NDYzNDIsImV4cCI6MTc2MzQ0OTk0Mn0.xh84Rv2xE6EwyoBUOcQ71wnAC9zfk5VCDuphKpv9NTY",
+								"type": "text"
+							}
+						],
+						"url": "localhost:3000/categories/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "transactions",
+			"item": [
+				{
+					"name": "Create transaction",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjaGlycHkiLCJzdWIiOiJiNTUwYjE3Yy1lMTNiLTQyZTMtODVlZi0yMmUxY2I3OTU3MjciLCJpYXQiOjE3NjM1MjMxNTAsImV4cCI6MTc2MzUyNjc1MH0.hGDd0hvaudN7zjrORoxvlcb-W_RaysTW9cIWv78O0Ak",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryId\": 2,\r\n    \"accountId\":1,\r\n    \"transactionType\": \"income\",\r\n    \"amount\": 300,\r\n    \"note\": \"เงินเดือน\",\r\n    \"referenceNumber\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/transactions"
+					},
+					"response": []
+				},
+				{
+					"name": "monthly-summary",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjaGlycHkiLCJzdWIiOiJiNTUwYjE3Yy1lMTNiLTQyZTMtODVlZi0yMmUxY2I3OTU3MjciLCJpYXQiOjE3NjM1MjMxNTAsImV4cCI6MTc2MzUyNjc1MH0.hGDd0hvaudN7zjrORoxvlcb-W_RaysTW9cIWv78O0Ak",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryId\": 1,\r\n    \"accountId\":1,\r\n    \"transactionType\": \"expense\",\r\n    \"amount\": 300,\r\n    \"note\": \"อร่อย\",\r\n    \"referenceNumber\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/transactions/monthly-summary"
+					},
+					"response": []
+				},
+				{
+					"name": "categories-summary",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjaGlycHkiLCJzdWIiOiJiNTUwYjE3Yy1lMTNiLTQyZTMtODVlZi0yMmUxY2I3OTU3MjciLCJpYXQiOjE3NjM1MjMxNTAsImV4cCI6MTc2MzUyNjc1MH0.hGDd0hvaudN7zjrORoxvlcb-W_RaysTW9cIWv78O0Ak",
+								"type": "text"
+							}
+						],
+						"url": "localhost:3000/transactions/categories-summary"
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjaGlycHkiLCJzdWIiOiJiNTUwYjE3Yy1lMTNiLTQyZTMtODVlZi0yMmUxY2I3OTU3MjciLCJpYXQiOjE3NjM1MjY4NjAsImV4cCI6MTc2MzUzMDQ2MH0.eWIfJMlngAv2LuGtUou3HS8-KcB78IKp-HJCjxeEdcY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"year\": 2025,\r\n   \"month\": 11,\r\n   \"categoryId\": 1,\r\n   \"accountId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/transactions/summary2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"pop@mail.com\",\r\n    \"password\": \"pop\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:3000/login"
+			},
+			"response": []
+		}
+	]
+}
