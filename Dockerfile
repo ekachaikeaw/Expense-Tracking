@@ -4,6 +4,8 @@ WORKDIR /usr/src/app
 
 ADD . .
 
+COPY .env* ./
+
 RUN npm ci
 
 RUN npm run build
