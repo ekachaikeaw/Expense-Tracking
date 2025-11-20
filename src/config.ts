@@ -1,4 +1,4 @@
-import { loadEnvFile } from "node:process";
+import { loadEnvFile } from "process";
 import { MigrationConfig } from "drizzle-orm/migrator";
 
 loadEnvFile();
