@@ -195,6 +195,7 @@ export async function getTransactions(
         .orderBy(desc(transactions.transactionDate));
 
     // Apply filters if any exist
+    // TODO: fix any type issues
     let baseQuery = query as any;
     if (conditions.length > 0) {
         baseQuery = query.where(and(...conditions));
