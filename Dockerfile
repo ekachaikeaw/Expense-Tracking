@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 node:latest
+FROM --platform=linux/amd64 node:22.18
 
 WORKDIR /usr/src/app
 
