@@ -231,3 +231,81 @@ export async function getTransactions(
         },
     };
 }
+
+
+interface CategorySummaryFilters {
+  year?: number;
+  month?: number;
+  transactionType?: 'expense' | 'income';
+}
+
+interface CategorySummary {
+  mainCategory: string;
+  subCategory: string;
+  totalAmount: number;
+  transactionCount: number;
+}
+
+export async function getCategorySummary2(
+  filters: CategorySummaryFilters = {}
+): Promise<CategorySummary[]> {
+  const conditions = [];
+
+  // Filter by transaction type
+  if (filters.transactionType) {
+    conditions.push(eq(transactions.transactionType, filters.transactionType));
+  }
+
+  // Filter by year and month
+  if (filters.year !== undefined && filters.month !== undefined) {
+    const startDate = `${filters.year}-${String(filters.month).padStart(2, '0')}-01`;
+    const lastDay = new Date(filters.year, filters.month, 0).getDate();
+    const endDate = `${filters.year}-${String(filters.month).padStart(2, '0')}-${lastDay}`;
+    conditions.push(
+      gte(transactions.transactionDate, startDate),
+      lte(transactions.transactionDate, endDate)
+    );
+  } else if (filters.year !== undefined) {
+    // Filter by year only
+    const startDate = `${filters.year}-01-01`;
+    const endDate = `${filters.year}-12-31`;
+    conditions.push(
+      gte(transactions.transactionDate, startDate),
+      lte(transactions.transactionDate, endDate)
+    );
+  }
+
+  // Create subquery for parent categories
+  const parentCategories = db
+    .select({
+      id: categories.id,
+      name: categories.name,
+      parentCategoryId: categories.parentCategoryId
+    })
+    .from(categories)
+    .as('parent');
+
+  // Build the query
+  const mainCategoryExpr = sql<string>`COALESCE(${parentCategories.name}, ${categories.name})`;
+  const totalAmountExpr = sql<number>`SUM(${transactions.amount})`;
+
+  const query = db
+    .select({
+      mainCategory: mainCategoryExpr,
+      subCategory: categories.name,
+      totalAmount: totalAmountExpr,
+      transactionCount: sql<number>`COUNT(${transactions.id})`
+    })
+    .from(transactions)
+    .innerJoin(categories, eq(transactions.categoryId, categories.id))
+    .leftJoin(parentCategories, eq(categories.parentCategoryId, parentCategories.id))
+    .groupBy(mainCategoryExpr, categories.name)
+    .orderBy(desc(totalAmountExpr));
+
+  // Apply filters
+  if (conditions.length > 0) {
+    return await query.where(and(...conditions));
+  }
+
+  return await query;
+}

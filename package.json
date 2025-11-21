@@ -24,6 +24,7 @@
         "typescript": "^5.9.3"
     },
     "dependencies": {
+        "bad-words": "^4.0.0",
         "bcrypt": "^6.0.0",
         "drizzle-orm": "^0.44.7",
         "express": "^5.1.0",

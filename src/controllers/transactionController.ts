@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { NewTransaction } from "../db/schema.js";
 import * as transactionService from "../services/transactionService.js";
 import { responseWithJSON } from "../utils/resJson.js";
+import { sanitizeText } from "../utils/sanitizer.js";
 
 export async function createTransaction(req: Request, res: Response) {
     if (!req.user || !req.user.id) {
@@ -23,6 +24,9 @@ export async function createTransaction(req: Request, res: Response) {
         note,
         referenceNumber,
     } = req.body;
+    
+    const sanitizedNote = sanitizeText(note);
+    console.log(sanitizedNote)
 
     const newTransaction: NewTransaction = {
         accountId: parseInt(accountId, 10),
@@ -31,7 +35,7 @@ export async function createTransaction(req: Request, res: Response) {
         amount,
         transactionDate,
         transactionTime,
-        note,
+        note: sanitizedNote,
         referenceNumber,
     };
 

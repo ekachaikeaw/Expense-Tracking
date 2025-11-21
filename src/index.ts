@@ -10,7 +10,7 @@ import * as accountsController from "./controllers/accountController.js";
 import * as categoriesController from "./controllers/categoriesController.js";
 import * as transactionsController from "./controllers/transactionController.js";
 
-import { getTransactions } from "./repositories/transactionRepo.js";
+import { getCategorySummary2, getTransactions } from "./repositories/transactionRepo.js";
 
 import { handlerLogin } from "./controllers/loginController.js";
 import { errorMiddleware } from "./middlewares/errorHandler.js";
@@ -114,6 +114,11 @@ app.get(
 app.get("/transactions/summary2", asyncErrorWrapper(async (req, res) => {
    const filter = req.body;
    const transactions = await getTransactions(filter);
+   res.json(transactions);
+}))
+app.get("/transactions/summary3", asyncErrorWrapper(async (req, res) => {
+   const filter = req.body;
+   const transactions = await getCategorySummary2(filter);
    res.json(transactions);
 }))
 
