@@ -34,9 +34,9 @@ export async function getMonthlySummary() {
     return result;
 }
 
-export async function getCategoriesSummary(type: string) {
+export async function getCategoriesSummary(type: string, limit?: number) {
     const result = await transactionRepo.getCategorySummary(
-        type as transactionType,
+        type as transactionType, limit
     );
     if (!result) {
         throw new Error("Failed to get categories summary");

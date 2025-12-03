@@ -46,7 +46,7 @@ export async function getMonthlySummary() {
 }
 
 export type transactionType = "income" | "expense" | "transfer";
-export async function getCategorySummary(type?: transactionType) {
+export async function getCategorySummary(type?: transactionType, limit?: number) {
     let result;
     if (type) {
         result = await db
@@ -60,7 +60,8 @@ export async function getCategorySummary(type?: transactionType) {
                 sql`${transactions.categoryId} = ${categories.id}`,
             )
             .where(eq(transactions.transactionType, type))
-            .groupBy(categories.id);
+            .groupBy(categories.id)
+            .limit(limit ?? 10);
     } else {
         result = await db
             .select({

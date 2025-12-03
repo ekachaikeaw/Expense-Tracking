@@ -66,8 +66,10 @@ export async function getMonthlySummary(req: Request, res: Response) {
 
 export async function getCategoriesSummary(req: Request, res: Response) {
     const type = req.query?.type;
+    const limit = req.query?.limit;
     const typeString = type as string;
-    const summary = await transactionService.getCategoriesSummary(typeString);
+    const limitNumber = limit ? parseInt(limit as string, 10) : undefined;
+    const summary = await transactionService.getCategoriesSummary(typeString, limitNumber);
     if (!summary) {
         responseWithJSON(res, 500, {
             message: "Failed to get categories summary",
